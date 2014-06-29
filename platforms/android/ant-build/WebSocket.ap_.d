@@ -40,9 +40,11 @@ C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\src \
 C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\css\index.css \
 C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\img\logo.png \
 C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\js\document_web.js \
+C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\js\doc_maior.js \
 C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\js\jquery.min.js \
 C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\js\partitura.js \
 C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\js\partitura_menor.js \
+C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\js\part_complete.js \
 C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\js\websocket.js \
 C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\plugins\com.knowledgecode.cordova.websocket \
 C:\Users\Gaabi\Documents\FURB\websocket\platforms\android\assets\www\plugins\com.knowledgecode.cordova.websocket\www \
