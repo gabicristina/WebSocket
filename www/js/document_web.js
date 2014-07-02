@@ -15,7 +15,17 @@ Vex.Flow.Test.Web.xmlSimple = function(options, contextBuilder) {
 
 	//var ctx = new contextBuilder(options.canvas_sel, 300, 120);
 	var ctx = new contextBuilder(options.canvas_sel, 1200, 600);
-	doc.getFormatter().setWidth(1200).drawBlock(0, ctx);
+	//ctx.scale(0.4, 0.4);
+	//doc.getFormatter().setWidth(1200).drawBlock(0, ctx);
+	var formatter = new Vex.Flow.DocumentFormatter();
+	
+	var m = doc.getMeasure(2);
+	var stave = doc.getStaveConnectors();
+	var staves = doc.getFormatter().vfStaves[m];
+	ctx.scale(1.4, 1.4);
+	var options = {system_start: m == measures[0],
+            system_end: m == measures[measures.length - 1]};
+	doc.getFormatter().setWidth(1200).drawMeasure(m, staves, ctx, options);
 	ok(true, "drew document");
 };
 
@@ -36,19 +46,22 @@ function errorReaderHandler(evt) {
 };
 
 Vex.Flow.Test.Web.xmlDoc = function(options, contextBuilder) {
-	if (!message) {
+	//if (!message) {
+	if (!comp) {
 		alert("Document does not exist");
 		ok(false, "Document does not exist");
 		return;
 	}
 	expect(2);
-	var docWeb = new Vex.Flow.Document(message);
+	//var docWeb = new Vex.Flow.Document(message);
+	var docWeb = new Vex.Flow.Document(comp);
 	ok(true, "created document");
 
-	var formatter = docWeb.getFormatter();
-	formatter.setWidth(800);
+	//var formatter = docWeb.getFormatter();
+	//formatter.setWidth(800);
 	var ctx = new contextBuilder(options.canvas_sel, 480, 120);
-	ctx.scale(0.6, 0.6);
-	formatter.drawBlock(0, ctx);
+	ctx.scale(1.0, 1.0);
+	doc.getFormatter().setWidth(480).drawBlock(0, ctx);
+	//formatter.drawBlock(0, ctx);
 	ok(true, "drew document");
 };
