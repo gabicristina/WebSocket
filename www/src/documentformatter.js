@@ -497,9 +497,9 @@ Vex.Flow.DocumentFormatter.prototype.drawBlockSong = function(numMeasure, b, con
 }
 
 Vex.Flow.DocumentFormatter.prototype.drawBlockMeasure = function(numMeasure, b, context) {
-	alert("mimimi do formatter");
 	this.getBlock(b);
 	var measures = this.measuresInBlock[b];
+	alert(measures.length);
 	for (var i = 0; i < numMeasure; i++) {
 		var m = measures[j];
 		var stave = 0;

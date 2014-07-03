@@ -491,15 +491,15 @@ Vex.Flow.DocumentFormatter.prototype.drawBlockSong = function(numMeasure, b, con
 	this.drawBlockMeasure(numMeasure, b, context);
 	alert("jajaskdjals!");
 	while (j < nmeas) {
-		alert("oi!");
+		alert(j < nmeas);
 		setTimeout(this.drawBlockMeasure(numMeasure, b, context), 3000);
 	}
 }
 
 Vex.Flow.DocumentFormatter.prototype.drawBlockMeasure = function(numMeasure, b, context) {
-	alert("mimimi do formatter");
 	this.getBlock(b);
 	var measures = this.measuresInBlock[b];
+	alert(measures.length);
 	for (var i = 0; i < numMeasure; i++) {
 		var m = measures[j];
 		var stave = 0;
