@@ -13,7 +13,7 @@
 Vex.Flow.DocumentFormatter = function(document) {
 	if (arguments.length > 0)
 		this.init(document);
-}
+};
 
 Vex.Flow.DocumentFormatter.prototype.init = function(document) {
 	if (typeof document != "object")
@@ -37,7 +37,7 @@ Vex.Flow.DocumentFormatter.prototype.init = function(document) {
 	// this.minMeasureHeights[m][0] is space above measure
 	// this.minMeasureHeights[m][s+1] is minimum height of stave s
 	this.minMeasureHeights = [];
-}
+};
 
 /**
  * Vex.Flow.DocumentFormatter.prototype.getStaveX: to be defined by subclass
@@ -79,7 +79,7 @@ Vex.Flow.DocumentFormatter.prototype.getStaveY = function(m, s) {
 
 	var higherStave = this.getStave(m, s - 1);
 	return higherStave.y + higherStave.getHeight();
-}
+};
 
 /**
  * Vex.Flow.DocumentFormatter.prototype.getStaveWidth: defined in subclass
@@ -124,7 +124,7 @@ Vex.Flow.DocumentFormatter.prototype.createVexflowStave = function(s, x, y, w) {
 	if (typeof s.clef == "string")
 		vfStave.clef = s.clef;
 	return vfStave;
-}
+};
 
 /**
  * Use getStaveX, getStaveY, getStaveWidth to create a Vex.Flow.Stave from the
@@ -152,7 +152,7 @@ Vex.Flow.DocumentFormatter.prototype.getStave = function(m, s) {
 		this.vfStaves[m] = [];
 	this.vfStaves[m][s] = vfStave;
 	return vfStave;
-}
+};
 
 /**
  * Create a Vex.Flow.Voice from a Vex.Flow.Measure.Voice. Each note is added to
@@ -247,7 +247,7 @@ Vex.Flow.DocumentFormatter.prototype.getVexflowVoice = function(voice, staves) {
 		console.assert(vfVoice.stave instanceof Vex.Flow.Stave,
 				"VexFlow voice should have a stave");
 	return [ vfVoice, vexflowObjects, lyricVoice ];
-}
+};
 
 /**
  * Create a Vex.Flow.StaveNote from a Vex.Flow.Measure.Note.
@@ -276,7 +276,7 @@ Vex.Flow.DocumentFormatter.prototype.getVexflowNote = function(note, options) {
 	for (var i = 0; i < numDots; i++)
 		vfNote.addDotToAll();
 	return vfNote;
-}
+};
 
 Vex.Flow.DocumentFormatter.prototype.getMinMeasureWidth = function(m) {
 	if (!(m in this.minMeasureWidths)) {
@@ -368,7 +368,7 @@ Vex.Flow.DocumentFormatter.prototype.getMinMeasureHeight = function(m) {
 	if (!(m in this.minMeasureHeights))
 		this.getMinMeasureWidth(m);
 	return this.minMeasureHeights[m];
-}
+};
 
 // Internal drawing functions
 Vex.Flow.DocumentFormatter.prototype.drawPart = function(part, vfStaves,
@@ -408,7 +408,7 @@ Vex.Flow.DocumentFormatter.prototype.drawPart = function(part, vfStaves,
 	allVfObjects.forEach(function(obj) {
 		obj.setContext(context).draw();
 	});
-}
+};
 
 // Options contains system_start, system_end for measure
 Vex.Flow.DocumentFormatter.prototype.drawMeasure = function(measure, vfStaves,
@@ -466,7 +466,7 @@ Vex.Flow.DocumentFormatter.prototype.drawMeasure = function(measure, vfStaves,
 									.setType(type).setContext(context).draw();
 						}
 					});
-}
+};
 
 Vex.Flow.DocumentFormatter.prototype.drawBlock = function(b, context) {
 	this.getBlock(b);
@@ -481,39 +481,27 @@ Vex.Flow.DocumentFormatter.prototype.drawBlock = function(b, context) {
 					system_end : m == measures[measures.length - 1]
 				});
 	}, this);
-}
+};
 
-Vex.Flow.DocumentFormatter.prototype.drawBlockGabi = function(numMeasure, b, context) {
-	var i = 1;
+var j = 0;
+Vex.Flow.DocumentFormatter.prototype.drawBlockSong = function(numMeasure, b, context) {
 	this.getBlock(b);
-	var measures = this.measuresInBlock[b];
-
-	measures.every(function(m) {
-		var stave = 0;
-		while (this.getStave(m, stave))
-			stave++;
-		this.drawMeasure(this.document.getMeasure(m), this.vfStaves[m],
-				context, {
-					system_start : m == measures[0],
-					system_end : m == measures[measures.length - 1]
-				});
-		if (i % numMeasure === 0)
-			return false;
-		else {
-			i++;
-			return true;
-		}
-	}, this);
+	var nmeas = this.measuresInBlock[b].length;
+	alert("oi");
+	this.drawBlockMeasure(numMeasure, b, context);
+	alert("jajaskdjals!");
+	while (j < nmeas) {
+		alert(j < nmeas);
+		setTimeout(this.drawBlockMeasure(numMeasure, b, context), 3000);
+	}
 }
 
 Vex.Flow.DocumentFormatter.prototype.drawBlockMeasure = function(numMeasure, b, context) {
-	var i = 1;
+	alert("mimimi do formatter");
 	this.getBlock(b);
 	var measures = this.measuresInBlock[b];
-
-	for (i = 1; i < 5; i++) {
-		alert("oi");
-		var m = measures[i];
+	for (var i = 0; i < numMeasure; i++) {
+		var m = measures[j];
 		var stave = 0;
 		while (this.getStave(m, stave))
 			stave++;
@@ -522,8 +510,9 @@ Vex.Flow.DocumentFormatter.prototype.drawBlockMeasure = function(numMeasure, b, 
 					system_start : m == measures[0],
 					system_end : m == measures[measures.length - 1]
 				});
+		j++;
 	}
-}
+};
 /**
  * Vex.Flow.DocumentFormatter.prototype.draw - defined in subclass Render
  * document inside HTML element, creating canvases, etc. Called a second time to
@@ -691,21 +680,21 @@ Vex.Flow.DocumentFormatter.Liquid.prototype.getBlock = function(b) {
 	this.blockDimensions[b][1] = height;
 
 	return this.blockDimensions[b];
-}
+};
 
 Vex.Flow.DocumentFormatter.Liquid.prototype.getStaveX = function(m, s) {
 	if (!(m in this.measureX))
 		throw new Vex.RERR("FormattingError",
 				"Creating stave for measure which does not belong to a block");
 	return this.measureX[m];
-}
+};
 
 Vex.Flow.DocumentFormatter.Liquid.prototype.getStaveWidth = function(m, s) {
 	if (!(m in this.measureWidth))
 		throw new Vex.RERR("FormattingError",
 				"Creating stave for measure which does not belong to a block");
 	return this.measureWidth[m];
-}
+};
 
 Vex.Flow.DocumentFormatter.Liquid.prototype.draw = function(elem, options) {
 	if (this._htmlElem != elem) {
@@ -793,4 +782,4 @@ Vex.Flow.DocumentFormatter.Liquid.prototype.draw = function(elem, options) {
 		delete this.canvases[b];
 		b++;
 	}
-}
+};

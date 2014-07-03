@@ -5,7 +5,7 @@ Vex.Flow.Test.Web = {};
 Vex.Flow.Test.Web.Start = function() {
 	module("Document");
 	Vex.Flow.Test.runTest("Basic MusicXML Test", Vex.Flow.Test.Web.xmlSimple);
-	Vex.Flow.Test.runTest("MusicXML Document Test", Vex.Flow.Test.Web.xmlDoc);
+	//Vex.Flow.Test.runTest("MusicXML Document Test", Vex.Flow.Test.Web.xmlDoc);
 };
 
 Vex.Flow.Test.Web.xmlSimple = function(options, contextBuilder) {
@@ -16,15 +16,16 @@ Vex.Flow.Test.Web.xmlSimple = function(options, contextBuilder) {
 	var ctx = new contextBuilder(options.canvas_sel, 1200, 120);
 	var formatter = new Vex.Flow.DocumentFormatter();
 	ctx.scale(1.0, 1.0);
-	var v = doc.getNumberOfMeasures();
+	//var v = doc.getNumberOfMeasures();
 	
-	var i = 1;	
+	//var i = 5;	
+	//doc.getFormatter().setWidth(1200).drawBlockGabi(i, 0, ctx);
 	/*var myVar = setInterval(function(){
 		doc.getFormatter().setWidth(1200).drawBlockGabi(i, 0, ctx);
 		alert("oi!");
 	},5000);*/
 	
-	doc.getFormatter().setWidth(1200).drawBlockMeasure(5, 0, ctx);
+	doc.getFormatter().setWidth(1200).drawBlockSong(5, 0, ctx);
 	ok(true, "drew document");
 };
 
