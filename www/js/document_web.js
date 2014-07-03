@@ -13,19 +13,18 @@ Vex.Flow.Test.Web.xmlSimple = function(options, contextBuilder) {
 	doc = new Vex.Flow.Document(comp);
 	ok(true, "created document");
 
-	//var ctx = new contextBuilder(options.canvas_sel, 300, 120);
-	var ctx = new contextBuilder(options.canvas_sel, 1200, 600);
-	//ctx.scale(0.4, 0.4);
-	//doc.getFormatter().setWidth(1200).drawBlock(0, ctx);
+	var ctx = new contextBuilder(options.canvas_sel, 1200, 120);
 	var formatter = new Vex.Flow.DocumentFormatter();
+	ctx.scale(1.0, 1.0);
+	var v = doc.getNumberOfMeasures();
 	
-	var m = doc.getMeasure(2);
-	var stave = doc.getStaveConnectors();
-	var staves = doc.getFormatter().vfStaves[m];
-	ctx.scale(1.4, 1.4);
-	var options = {system_start: m == measures[0],
-            system_end: m == measures[measures.length - 1]};
-	doc.getFormatter().setWidth(1200).drawMeasure(m, staves, ctx, options);
+	var i = 1;	
+	/*var myVar = setInterval(function(){
+		doc.getFormatter().setWidth(1200).drawBlockGabi(i, 0, ctx);
+		alert("oi!");
+	},5000);*/
+	
+	doc.getFormatter().setWidth(1200).drawBlockMeasure(5, 0, ctx);
 	ok(true, "drew document");
 };
 
