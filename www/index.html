@@ -6,7 +6,6 @@
 
 <!-- SCRIPTS VEXXX MUSICXML -->
 <!-- VexFlow Sources -->
-<!-- VexFlow Sources -->
 <script src="src/header.js"></script>
 <script src="src/vex.js"></script>
 <script src="src/flow.js"></script>
@@ -104,6 +103,13 @@
 		});
 		$('#btn_websocket').click(function() {
 			Vex.Flow.Test.Web.Start();
+			setInterval(function() {
+				windowScoreTop+=130; 
+			    window.scrollTo(0,windowScoreTop);
+			    if (windowScoreTop > 1000) {
+			    	clearInterval();
+			    }
+			}, 2000);
 		});
 	});
 </script>

@@ -2,12 +2,14 @@ var doc;
 
 Vex.Flow.Test.Web = {};
 var i = 0;
+var windowScoreTop = 0;
 
 Vex.Flow.Test.Web.Start = function() {
 	module("Document");
 	//Vex.Flow.Test.runTest("Basic MusicXML Test", Vex.Flow.Test.Web.xmlSimple);
-	Vex.Flow.Test.runTest("", Vex.Flow.Test.Web.xmlDoc);
-	Vex.Flow.Test.runTest("", Vex.Flow.Test.Web.xmlDoc);
+	for (i = 0; i < 12; i++) {
+		Vex.Flow.Test.runTest("", Vex.Flow.Test.Web.xmlDoc);
+	}
 };
 
 Vex.Flow.Test.Web.xmlSimple = function(options, contextBuilder) {
@@ -64,7 +66,6 @@ Vex.Flow.Test.Web.xmlDoc = function(options, contextBuilder) {
 	var ctx = new contextBuilder(options.canvas_sel, 750, 130);
 	ctx.scale(1.2, 1.2);
 	docWeb.getFormatter().setWidth(600).drawBlock(i, ctx);
-	i++;
 	//formatter.drawBlock(0, ctx);
 	ok(true, "drew document");
 };
